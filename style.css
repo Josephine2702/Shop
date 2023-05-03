@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+   
+    width: 100%;
+    
+    background-color: #ededed;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.header {
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+  
+}
+
+.logo {
+    width: 10%;
+}
+select {
+    width: 150px;
+    border-radius:5px;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    border: solid 1px rgb(215, 215, 215);
+}
+
+.container {
+    max-width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    
+}
+
+.item {
+    width: 260px;
+    height: auto;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 11px;
+    background: #fff;
+    box-shadow:  6px 6px 12px #c5c5c5,
+                 -6px -6px 12px #ffffff;
+}
+
+.item-title {
+    padding: 0 15px 10px 15px;
+}
+
+.item-image {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+img {
+    max-width: 50%;
+    height: auto;    
+    }
+
+    .item-price {
+        font-size: 20px;
+        font-weight: 700;
+        color: rgb(38, 38, 124);
+    }
+
+    .fade {
+        opacity: 0.5;
+    }
+
+    .hide {
+        display: none !important;
+    }
+
+    .loader {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        background: linear-gradient(0deg, rgba(93, 228, 9, 0.438) 33%, #79ff18 100%);
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+        z-index: 100;
+      }
+      .loader::after {
+        content: '';  
+        box-sizing: border-box;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #ecffd299;
+      }
+      @keyframes rotation {
+        0% { transform: rotate(0deg) }
+        100% { transform: rotate(360deg)}
+      } 
