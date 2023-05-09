@@ -1,16 +1,14 @@
 import { BASE_URL } from "../api.js";
 import { container } from "../DOM.js";
+import { getJSON } from "./helper.js";
+import { createUI } from "./UI.js"
 
 class Products {
     async getProducts(){
         try {
-            const response = await fetch(BASE_URL);
-            if(!response.ok){
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
+            const data = await getJSON(`${BASE_URL}`);
             container.innerHTML = '';
-            return data;
+            return createUI.createUI(data);
         } catch(error){
             console.error(error);
         }

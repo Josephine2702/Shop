@@ -1,22 +1,31 @@
-import { products } from "./components/Products.js";
-import { createUI } from "./components/UI.js";
-import { select } from "./DOM.js";
-import { categories } from "./components/Category.js";
-import { sortByCategory } from "./components/ProductsBy.js";
+import { products } from "./components/Products.js"
+import { select, container } from "./DOM.js"
+import { categories } from "./components/Category.js"
+import { sortByCategory } from "./components/ProductsBy.js"
+import { showDetailedProduct } from "./components/Card.js"
 
 document.addEventListener('DOMContentLoaded', async () => {
-    let productsData = await products.getProducts();
-    createUI.createUI(productsData);
+    await products.getProducts();
     categories.setCategories();
-    
-})
+});
 
 select.addEventListener('change', () => {
     if(select.value === 'all'){
-        categories.setCategory()
+    products.getProducts()
     }else{
-        sortByCategory.getProductsByCategory()
+    sortByCategory.getProductsByCategory()
     }
 });
+
+container.addEventListener('click', (e) => {
+    let itemBox = e.target.closest('.item');
+    if(container){
+        itemBox.querySelectorAll('.item > :not(.item-add)');
+        const productId = itemBox.getAttribute('data-item-id');
+        showDetailedProduct(productId);
+    }
+});
+
+
 
 

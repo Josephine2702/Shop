@@ -1,6 +1,7 @@
 import { container,loader, select } from "../DOM.js";
 import { BASE_URL } from "../api.js";
 import { createUI } from "./UI.js";
+import { getJSON } from "./helper.js";
 
 class ProductsByCategory {
     async getProductsByCategory(){
@@ -8,11 +9,7 @@ class ProductsByCategory {
         loader.classList.remove('hide');
         container.classList.add('fade');
         try {
-            const response = await fetch(`${BASE_URL}/category/${value}`);
-            if(!response.ok){
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
+            const data = await getJSON(`${BASE_URL}/category/${value}`);
             loader.classList.add('hide');
             container.classList.remove('fade');
             container.innerHTML = '';

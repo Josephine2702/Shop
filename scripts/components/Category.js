@@ -1,14 +1,11 @@
-import { BASE_URL } from "../api.js";
-import { select } from "../DOM.js";
+import { BASE_URL } from "../api.js"
+import { select } from "../DOM.js"
+import { getJSON } from "./helper.js"
 
 class Category{
 async setCategories(){
     try {
-        const response = await fetch(`${BASE_URL}/categories`);
-        if(!response.ok){
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
+        const data = await getJSON(`${BASE_URL}/categories`);
         data.forEach(element => {
             select.innerHTML +=
             `
