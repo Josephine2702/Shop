@@ -4,13 +4,12 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }
 
 .wrapper {
     width: 100%;
-
     background-color: #ededed;
-    font-family: "Roboto", sans-serif;
 }
 
 .header {
@@ -93,6 +92,14 @@ img {
     opacity: 0.5;
 }
 
+.noscroll {
+    overflow: hidden;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
 .hide {
     display: none !important;
 }
@@ -138,14 +145,10 @@ img {
     filter: opacity(0.8);
 }
 
-main {
-    display: flex;
-    justify-content: center;
-}
 .card-container {
-    width: 400px;
+    max-width: 400px;
+    width: 100%;
     padding: 10px 25px;
-    position: absolute;
     z-index: 100;
 }
 
