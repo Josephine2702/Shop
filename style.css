@@ -148,6 +148,9 @@ img {
 .card-container {
     max-width: 400px;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 32%;
     padding: 10px 25px;
     z-index: 100;
 }

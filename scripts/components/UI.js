@@ -2,18 +2,18 @@
 import { container, cardContainer } from "../DOM.js"
 
 class UI {
-    
+ 
     createUI(data) {
         data.forEach(element => {
             container.innerHTML +=
         `
         <div data-item-id="${element.id}" class="item">
-        <div class="item-title"><h4>${element.title}</h4></div>
+        <h4 class="item-title">${data.title}</h4>
         <div class="item-image"><img src="${element.image}" alt="${element.title}"></div>
         <div class="item-bottom">
         <div class="item-price">${element.price}$</div> 
-        <img class="item-add"src="./assets/icon/plus.svg" alt=""> 
         </div>
+        <i class="ph ph-plus-square plus-icon"></i> 
         `
         });
     }
@@ -21,15 +21,20 @@ class UI {
    createCardUI(data){
          cardContainer.innerHTML =
     `
-    <div class="item-title"><h4>${data.title}</h4></div>
+    <h4 class="item-title">${data.title}</h4>
     <div class="item-image"><img src="${data.image}" alt="${data.title}"></div>
-    <div class="item-description"><p>${data.description}$</p></div>
+    <p class="item-description">${data.description}</p>
     <div class="item-bottom">
     <div class="item-price">${data.price}$</div> 
-    <img class="item-add"src="./assets/icon/plus.svg" alt=""> 
     </div>
+    <i class="ph ph-plus-square plus-icon"></i>
     `
 }
+
+    createBascketList(data){
+         container.innerHTML = `
+         `
+    }
 }
 
 export let createUI = new UI();
