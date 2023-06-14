@@ -52,6 +52,7 @@ select {
     background: #fff;
     box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
     cursor: pointer;
+    position: relative;
 }
 .item:hover {
     box-shadow: 6px 6px 12px #3e9211b3, -6px -6px 12px #ffffff;
@@ -77,15 +78,15 @@ img {
 .item-bottom {
     width: 100%;
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    padding: 20px 0;
+    padding: 20px;
 }
 
 .item-price {
     font-size: 20px;
     font-weight: 700;
     color: rgb(38, 38, 124);
+    padding-left: 40px;
 }
 
 .fade {
@@ -137,10 +138,17 @@ img {
         transform: rotate(360deg);
     }
 }
-
-.basket {
-    width: 30px;
+.basket a {
+   text-decoration: none;
 }
+
+.plus-icon {
+   position: absolute;
+    bottom: 3%;
+    right: 10%;
+}
+
+
 .basket:hover {
     filter: opacity(0.8);
 }
@@ -162,4 +170,90 @@ img {
 .item-add:hover {
     transform: scale(1.1);
     filter: opacity(0.8);
+}
+
+.ph{
+    font-size: 42px;
+    color: #50b30afa;
+    transition: all 0.3s;
+}
+
+.ph:hover{
+    filter: brightness(120%);
+    transform: scale(1.1);
+}
+
+.ph:active{
+    
+    transform: scale(0.9);
+}
+
+.cart-container{
+    max-width: 500px;
+    width: 100%;
+    position: fixed;
+    top: 10%;
+    left: 46%;
+    z-index: 100;
+    height: auto;
+    margin: 15px;
+    border-radius: 11px;
+    background: #fff;
+    box-shadow: 6px 6px 12px #45c7047e, -6px -6px 12px #45c7047e;
+}
+
+.cart-list {
+    padding-left: 15px;
+}
+
+.cart-item{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+
+.cart-item::before{
+    content: "";
+    width: 90%;
+    border: solid 1.5px #d5d5d5bf;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -12%;
+    filter: hue-rotate(90deg);
+    margin: 5px 0;
+}
+
+.cart-item-title{
+    margin: 5px;
+}
+
+.cart-item-price{
+    text-align: right;
+}
+
+
+.img-container{
+    margin: 0 10px;
+    max-width: 70px;
+    height: 80px;
+}
+
+.img-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.cart-trash{
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.cart-total{
+    text-align: right;
+    font-weight: 700;
+    font-size: 22px;
+    padding-right: 22%;
 }

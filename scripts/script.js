@@ -20,10 +20,13 @@ select.addEventListener('change', () => {
 
 container.addEventListener('click', (e) => {
     let itemBox = e.target.closest('.item');
-    if(container){
-        const productId = itemBox.getAttribute('data-item-id');
-        showCard.showDetailedProduct(productId);
-    } 
+    if (itemBox) {
+        const plusIcon = itemBox.querySelector('.plus-icon');
+        if (!plusIcon.contains(e.target)) {
+            const productId = itemBox.getAttribute('data-item-id');
+            showCard.showDetailedProduct(productId);
+        }
+    }
 });
 
 window.addEventListener('click', e => {
