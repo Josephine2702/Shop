@@ -138,7 +138,7 @@ img {
         transform: rotate(360deg);
     }
 }
-.basket a {
+.cart a {
    text-decoration: none;
 }
 
@@ -149,7 +149,7 @@ img {
 }
 
 
-.basket:hover {
+.cart:hover {
     filter: opacity(0.8);
 }
 
@@ -212,6 +212,7 @@ img {
     align-items: center;
     margin-bottom: 10px;
     position: relative;
+    padding-right: 20px;
 }
 
 
@@ -232,6 +233,7 @@ img {
 
 .cart-item-price{
     text-align: right;
+    padding-right: 20px;
 }
 
 
@@ -243,7 +245,8 @@ img {
 
 .img-container img {
   max-width: 100%;
-  height: auto;
+  height: 100%;
+ 
 }
 
 .cart-trash{

@@ -10,6 +10,13 @@ const openCard = function() {
     cardContainer.classList.remove('hide');
     select.disabled = true;
 }
+
+const openCart = function() {
+ container.classList.add('disabled');
+    wrapper.classList.add('fade');
+    select.disabled = true;
+}
+
 class Card {
 
  closeCard() {
@@ -31,6 +38,19 @@ async showDetailedProduct(id) {
    }
 
 }
+
+async showCart(id) {
+    openCart();
+    try{
+    const data = await getJSON(`${BASE_URL}/${id}`);
+    createUI.createCartList(data);
+    
+   } catch (err){
+    console.error(err);
+   }
+
+}
+
 }
 
 export let showCard = new Card();

@@ -1,8 +1,10 @@
-import { products } from "./components/Products.js"
 import { select, container } from "./DOM.js"
+import { products } from "./components/Products.js"
 import { categories } from "./components/Category.js"
 import { sortByCategory } from "./components/ProductsBy.js"
 import { showCard } from "./components/Card.js"
+import { createArrayOfId } from "./components/createArrayOfId"
+import { getProductId } from "./components/getProductId"
 
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -41,8 +43,16 @@ window.addEventListener('keydown', e => {
         showCard.closeCard();
     }
 });
+ 
 
-
+ container.addEventListener('click',  e => {
+   
+    const productId =  getProductId(e, '.item', '.plus-icon', 'data-item-id')
+           
+         const result = createArrayOfId(productId)
+            console.log(result);
+            // showCard.showCart(productId);
+        })
 
 
 

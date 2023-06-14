@@ -574,11 +574,13 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"jUTag":[function(require,module,exports) {
-var _productsJs = require("./components/Products.js");
 var _domJs = require("./DOM.js");
+var _productsJs = require("./components/Products.js");
 var _categoryJs = require("./components/Category.js");
 var _productsByJs = require("./components/ProductsBy.js");
 var _cardJs = require("./components/Card.js");
+var _createArrayOfId = require("./components/createArrayOfId");
+var _getProductId = require("./components/getProductId");
 document.addEventListener("DOMContentLoaded", async ()=>{
     await (0, _productsJs.products).getProducts();
     (0, _categoryJs.categories).setCategories();
@@ -604,8 +606,14 @@ window.addEventListener("click", (e)=>{
 window.addEventListener("keydown", (e)=>{
     if (e.key === "Escape") (0, _cardJs.showCard).closeCard();
 });
+(0, _domJs.container).addEventListener("click", (e)=>{
+    const productId = (0, _getProductId.getProductId)(e, ".item", ".plus-icon", "data-item-id");
+    const result = (0, _createArrayOfId.createArrayOfId)(productId);
+    console.log(result);
+// showCard.showCart(productId);
+});
 
-},{"./components/Products.js":"9VAzJ","./DOM.js":"aClWA","./components/Category.js":"9f2pY","./components/ProductsBy.js":"cbV1b","./components/Card.js":"86oNy"}],"9VAzJ":[function(require,module,exports) {
+},{"./components/Products.js":"9VAzJ","./DOM.js":"aClWA","./components/Category.js":"9f2pY","./components/ProductsBy.js":"cbV1b","./components/Card.js":"86oNy","./components/createArrayOfId":"5SlBn","./components/getProductId":"bIJ7y"}],"9VAzJ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "products", ()=>products);
@@ -673,7 +681,8 @@ parcelHelpers.export(exports, "select", ()=>select);
 parcelHelpers.export(exports, "loader", ()=>loader);
 parcelHelpers.export(exports, "itemContainer", ()=>itemContainer);
 parcelHelpers.export(exports, "cardContainer", ()=>cardContainer);
-const container = document.querySelector(".container"), mainContainer = document.querySelector(".main-container"), wrapper = document.querySelector(".wrapper"), item = document.querySelector(".item"), select = document.querySelector(".choose-category"), loader = document.querySelector(".loader"), itemContainer = document.querySelector(".item"), cardContainer = document.querySelector(".card-container");
+parcelHelpers.export(exports, "cart", ()=>cart);
+const container = document.querySelector(".container"), mainContainer = document.querySelector(".main-container"), wrapper = document.querySelector(".wrapper"), item = document.querySelector(".item"), select = document.querySelector(".choose-category"), loader = document.querySelector(".loader"), itemContainer = document.querySelector(".item"), cardContainer = document.querySelector(".card-container"), cart = document.querySelector(".cart");
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9xmJx":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -714,8 +723,8 @@ class UI {
         <div class="item-image"><img src="${element.image}" alt="${element.title}"></div>
         <div class="item-bottom">
         <div class="item-price">${element.price}$</div> 
-        </div>
         <i class="ph ph-plus-square plus-icon"></i> 
+        </div>
         `;
         });
     }
@@ -726,12 +735,27 @@ class UI {
     <p class="item-description">${data.description}</p>
     <div class="item-bottom">
     <div class="item-price">${data.price}$</div> 
+    <i class="plus-icon ph ph-plus-square"></i>
     </div>
-    <i class="ph ph-plus-square plus-icon"></i>
     `;
     }
-    createBascketList(data) {
-        (0, _domJs.container).innerHTML = `
+    createCartList(data) {
+        (0, _domJs.mainContainer).innerHTML += `
+            <div class="cart-container">
+                <ul class="cart-list">
+                    <li class="cart-item">
+                        <div class="img-container">
+                        <img src="${data.image}" alt="${data.title}">
+                        </div>
+                        <div class="cart-content">
+                            <h4 class="cart-item-title">${data.title}</h4>
+                            <div class="cart-item-price">${data.price}$</div>
+                        </div>
+                            <i class="ph ph-trash cart-trash"></i>
+                        </li>
+                        <div class="cart-total">Total: 80$</div>
+                    </ul>
+                </div>
          `;
     }
 }
@@ -800,6 +824,11 @@ const openCard = function() {
     (0, _domJs.cardContainer).classList.remove("hide");
     (0, _domJs.select).disabled = true;
 };
+const openCart = function() {
+    (0, _domJs.container).classList.add("disabled");
+    (0, _domJs.wrapper).classList.add("fade");
+    (0, _domJs.select).disabled = true;
+};
 class Card {
     closeCard() {
         (0, _domJs.container).classList.remove("disabled");
@@ -817,9 +846,44 @@ class Card {
             console.error(err);
         }
     }
+    async showCart(id) {
+        openCart();
+        try {
+            const data = await (0, _helperJs.getJSON)(`${(0, _apiJs.BASE_URL)}/${id}`);
+            (0, _uiJs.createUI).createCartList(data);
+        } catch (err) {
+            console.error(err);
+        }
+    }
 }
 let showCard = new Card();
 
-},{"../DOM.js":"aClWA","./UI.js":"eSl2s","../api.js":"in4Qx","./helper.js":"9xmJx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["2Yh4E","jUTag"], "jUTag", "parcelRequire8cd9")
+},{"../DOM.js":"aClWA","./UI.js":"eSl2s","../api.js":"in4Qx","./helper.js":"9xmJx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5SlBn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "createArrayOfId", ()=>createArrayOfId);
+const createArrayOfId = function() {
+    let arrOfProductId = [];
+    return function getId(id) {
+        arrOfProductId.push(+id);
+        return arrOfProductId;
+    };
+}();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bIJ7y":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getProductId", ()=>getProductId);
+const getProductId = function(e, containerSelector, itemSelector, attribute) {
+    let itemBox = e.target.closest(containerSelector);
+    let productId;
+    if (itemBox) {
+        const plusIcon = itemBox.querySelector(itemSelector);
+        if (plusIcon.contains(e.target)) return productId = itemBox.getAttribute(attribute);
+    }
+    return productId;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["2Yh4E","jUTag"], "jUTag", "parcelRequire8cd9")
 
 //# sourceMappingURL=index.cde5dfe0.js.map
