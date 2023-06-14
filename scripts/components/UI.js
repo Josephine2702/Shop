@@ -1,5 +1,5 @@
 
-import { container, cardContainer } from "../DOM.js"
+import { container, cardContainer, mainContainer } from "../DOM.js"
 
 class UI {
  
@@ -12,8 +12,8 @@ class UI {
         <div class="item-image"><img src="${element.image}" alt="${element.title}"></div>
         <div class="item-bottom">
         <div class="item-price">${element.price}$</div> 
-        </div>
         <i class="ph ph-plus-square plus-icon"></i> 
+        </div>
         `
         });
     }
@@ -26,13 +26,28 @@ class UI {
     <p class="item-description">${data.description}</p>
     <div class="item-bottom">
     <div class="item-price">${data.price}$</div> 
+    <i class="plus-icon ph ph-plus-square"></i>
     </div>
-    <i class="ph ph-plus-square plus-icon"></i>
     `
 }
 
-    createBascketList(data){
-         container.innerHTML = `
+    createCartList(data){
+         mainContainer.innerHTML += `
+            <div class="cart-container">
+                <ul class="cart-list">
+                    <li class="cart-item">
+                        <div class="img-container">
+                        <img src="${data.image}" alt="${data.title}">
+                        </div>
+                        <div class="cart-content">
+                            <h4 class="cart-item-title">${data.title}</h4>
+                            <div class="cart-item-price">${data.price}$</div>
+                        </div>
+                            <i class="ph ph-trash cart-trash"></i>
+                        </li>
+                        <div class="cart-total">Total: 80$</div>
+                    </ul>
+                </div>
          `
     }
 }

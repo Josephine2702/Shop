@@ -1,4 +1,4 @@
-import { container, cardContainer, wrapper, select, item} from "../DOM.js"
+import { container, cardContainer, wrapper, select} from "../DOM.js"
 import { createUI } from "./UI.js"
 import { BASE_URL } from "../api.js"
 import { getJSON } from "./helper.js"
@@ -10,6 +10,13 @@ const openCard = function() {
     cardContainer.classList.remove('hide');
     select.disabled = true;
 }
+
+const openCart = function() {
+ container.classList.add('disabled');
+    wrapper.classList.add('fade');
+    select.disabled = true;
+}
+
 class Card {
 
  closeCard() {
@@ -17,6 +24,7 @@ class Card {
     cardContainer.classList.add('hide');
     wrapper.classList.remove('fade');
     select.disabled = false;
+    cardContainer.innerHTML = '';
 };
 
 async showDetailedProduct(id) {
@@ -30,6 +38,19 @@ async showDetailedProduct(id) {
    }
 
 }
+
+async showCart(id) {
+    openCart();
+    try{
+    const data = await getJSON(`${BASE_URL}/${id}`);
+    createUI.createCartList(data);
+    
+   } catch (err){
+    console.error(err);
+   }
+
+}
+
 }
 
 export let showCard = new Card();
