@@ -39,7 +39,7 @@ async showDetailedProduct(id) {
 
 }
 
-async showCart(id) {
+async showCartList(id) {
     openCart();
     try{
     const data = await getJSON(`${BASE_URL}/${id}`);
@@ -47,8 +47,7 @@ async showCart(id) {
     
    } catch (err){
     console.error(err);
-   }
-
+   }  
 }
 
 }

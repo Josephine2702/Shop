@@ -1,4 +1,4 @@
-import { select, container } from "./DOM.js"
+import { select, container, cart } from "./DOM.js"
 import { products } from "./components/Products.js"
 import { categories } from "./components/Category.js"
 import { sortByCategory } from "./components/ProductsBy.js"
@@ -22,13 +22,8 @@ select.addEventListener('change', () => {
 
 container.addEventListener('click', (e) => {
     let itemBox = e.target.closest('.item');
-    if (itemBox) {
-        const plusIcon = itemBox.querySelector('.plus-icon');
-        if (!plusIcon.contains(e.target)) {
-            const productId = itemBox.getAttribute('data-item-id');
-            showCard.showDetailedProduct(productId);
-        }
-    }
+        const productId = itemBox.getAttribute('data-item-id');
+        showCard.showDetailedProduct(productId);    
 });
 
 window.addEventListener('click', e => {
@@ -45,14 +40,15 @@ window.addEventListener('keydown', e => {
 });
  
 
+
  container.addEventListener('click',  e => {
-   
     const productId =  getProductId(e, '.item', '.plus-icon', 'data-item-id')
            
          const result = createArrayOfId(productId)
             console.log(result);
-            // showCard.showCart(productId);
+            showCard.showCartList(productId);
         })
+
 
 
 
