@@ -1,18 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
-}
+} */
 
-.wrapper {
+/* .wrapper {
     width: 100%;
     background-color: #ededed;
-}
+} */
 
-.header {
+/* .header {
     height: 150px;
     display: flex;
     justify-content: space-around;
@@ -29,18 +29,18 @@ select {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
     border: solid 1px rgb(215, 215, 215);
-}
+} */
 
-.container {
+/* .container {
     max-width: 1200px;
     height: auto;
     margin: 0 auto;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-}
+} */
 
-.item {
+/* .item {
     width: 260px;
     height: auto;
     margin: 15px;
@@ -87,9 +87,9 @@ img {
     font-weight: 700;
     color: rgb(38, 38, 124);
     padding-left: 40px;
-}
+} */
 
-.fade {
+/* .fade {
     opacity: 0.5;
 }
 
@@ -103,8 +103,8 @@ img {
 
 .hide {
     display: none !important;
-}
-
+} */
+/* 
 .loader {
     width: 48px;
     height: 48px;
@@ -137,23 +137,23 @@ img {
     100% {
         transform: rotate(360deg);
     }
-}
-.cart a {
-   text-decoration: none;
-}
+} */
 
-.plus-icon {
+
+/* .plus-icon {
    position: absolute;
     bottom: 3%;
     right: 10%;
+} */
+/* .cart a {
+   text-decoration: none;
 }
-
 
 .cart:hover {
     filter: opacity(0.8);
-}
+} */
 
-.card-container {
+/* .card-container {
     max-width: 400px;
     width: 100%;
     position: fixed;
@@ -161,17 +161,17 @@ img {
     left: 32%;
     padding: 10px 25px;
     z-index: 100;
-}
+} */
 
-.item-add {
+/* .item-add {
     width: 25px;
 }
 
 .item-add:hover {
     transform: scale(1.1);
     filter: opacity(0.8);
-}
-
+} */
+/* 
 .ph{
     font-size: 42px;
     color: #50b30afa;
@@ -186,9 +186,9 @@ img {
 .ph:active{
     
     transform: scale(0.9);
-}
+} */
 
-.cart-container{
+/* .cart-container{
     max-width: 500px;
     width: 100%;
     position: fixed;
@@ -259,4 +259,4 @@ img {
     font-weight: 700;
     font-size: 22px;
     padding-right: 22%;
-}
+} */

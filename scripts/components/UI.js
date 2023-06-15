@@ -8,11 +8,11 @@ class UI {
             container.innerHTML +=
         `
         <div data-item-id="${element.id}" class="item">
-        <h4 class="item-title">${data.title}</h4>
+        <h4 class="item-title">${element.title}</h4>
         <div class="item-image"><img src="${element.image}" alt="${element.title}"></div>
         <div class="item-bottom">
         <div class="item-price">${element.price}$</div> 
-        <i class="ph ph-plus-square plus-icon"></i> 
+        <div class="icon-position"><i class="ph ph-magnifying-glass"></i></div> 
         </div>
         `
         });
@@ -26,7 +26,7 @@ class UI {
     <p class="item-description">${data.description}</p>
     <div class="item-bottom">
     <div class="item-price">${data.price}$</div> 
-    <i class="plus-icon ph ph-plus-square"></i>
+    <div class="icon-position plus-icon"><i class="ph ph-plus-square"></i></div>
     </div>
     `
 }

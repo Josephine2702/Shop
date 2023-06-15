@@ -591,13 +591,8 @@ document.addEventListener("DOMContentLoaded", async ()=>{
 });
 (0, _domJs.container).addEventListener("click", (e)=>{
     let itemBox = e.target.closest(".item");
-    if (itemBox) {
-        const plusIcon = itemBox.querySelector(".plus-icon");
-        if (!plusIcon.contains(e.target)) {
-            const productId = itemBox.getAttribute("data-item-id");
-            (0, _cardJs.showCard).showDetailedProduct(productId);
-        }
-    }
+    const productId = itemBox.getAttribute("data-item-id");
+    (0, _cardJs.showCard).showDetailedProduct(productId);
 });
 window.addEventListener("click", (e)=>{
     const target = e.target;
@@ -610,7 +605,7 @@ window.addEventListener("keydown", (e)=>{
     const productId = (0, _getProductId.getProductId)(e, ".item", ".plus-icon", "data-item-id");
     const result = (0, _createArrayOfId.createArrayOfId)(productId);
     console.log(result);
-// showCard.showCart(productId);
+    (0, _cardJs.showCard).showCartList(productId);
 });
 
 },{"./components/Products.js":"9VAzJ","./DOM.js":"aClWA","./components/Category.js":"9f2pY","./components/ProductsBy.js":"cbV1b","./components/Card.js":"86oNy","./components/createArrayOfId":"5SlBn","./components/getProductId":"bIJ7y"}],"9VAzJ":[function(require,module,exports) {
@@ -719,11 +714,11 @@ class UI {
         data.forEach((element)=>{
             (0, _domJs.container).innerHTML += `
         <div data-item-id="${element.id}" class="item">
-        <h4 class="item-title">${data.title}</h4>
+        <h4 class="item-title">${element.title}</h4>
         <div class="item-image"><img src="${element.image}" alt="${element.title}"></div>
         <div class="item-bottom">
         <div class="item-price">${element.price}$</div> 
-        <i class="ph ph-plus-square plus-icon"></i> 
+        <div class="icon-position"><i class="ph ph-magnifying-glass"></i></div> 
         </div>
         `;
         });
@@ -735,7 +730,7 @@ class UI {
     <p class="item-description">${data.description}</p>
     <div class="item-bottom">
     <div class="item-price">${data.price}$</div> 
-    <i class="plus-icon ph ph-plus-square"></i>
+    <div class="icon-position plus-icon"><i class="ph ph-plus-square"></i></div>
     </div>
     `;
     }
@@ -846,7 +841,7 @@ class Card {
             console.error(err);
         }
     }
-    async showCart(id) {
+    async showCartList(id) {
         openCart();
         try {
             const data = await (0, _helperJs.getJSON)(`${(0, _apiJs.BASE_URL)}/${id}`);

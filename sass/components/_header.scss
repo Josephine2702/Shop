@@ -1,0 +1,32 @@
+.header {
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo {
+    width: 10%;
+}
+
+select {
+    width: 150px;
+    border-radius: 5px;
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    border: solid 1px rgb(215, 215, 215);
+}
+
+.cart {
+    
+    a {
+        text-decoration: none;
+    }
+
+    &:hover {
+    filter: opacity(0.8);
+    }
+} 
+
+
