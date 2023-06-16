@@ -1,5 +1,5 @@
 
-import { container, cardContainer, mainContainer } from "../DOM.js"
+import { container, cardContainer, mainContainer, basketContainer } from "../DOM.js"
 
 class UI {
  
@@ -21,6 +21,7 @@ class UI {
    createCardUI(data){
          cardContainer.innerHTML =
     `
+    <div data-item-id="${data.id}" class="item-card">
     <h4 class="item-title">${data.title}</h4>
     <div class="item-image"><img src="${data.image}" alt="${data.title}"></div>
     <p class="item-description">${data.description}</p>
@@ -32,8 +33,8 @@ class UI {
 }
 
     createCartList(data){
-         mainContainer.innerHTML += `
-            <div class="cart-container">
+         basketContainer.innerHTML += `
+            
                 <ul class="cart-list">
                     <li class="cart-item">
                         <div class="img-container">
@@ -41,13 +42,18 @@ class UI {
                         </div>
                         <div class="cart-content">
                             <h4 class="cart-item-title">${data.title}</h4>
+                            <div class="cart-quantity-block">
+                                <div class="cart-quantity-functional">
+                                <button class="cart-quantity-decr">-</button>
+                                <input class="cart-quantity" type="text" value="1">
+                                <button class="cart-quantity-incr">+</button>
+                                </div>
                             <div class="cart-item-price">${data.price}$</div>
                         </div>
+                          </div>
                             <i class="ph ph-trash cart-trash"></i>
                         </li>
-                        <div class="cart-total">Total: 80$</div>
                     </ul>
-                </div>
          `
     }
 }
